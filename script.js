@@ -36,8 +36,6 @@ const getDuplicate = document.querySelector('.getDuplicate');
 const comboOptimiser = document.querySelector('.comboOptimiser');
 const removeEmptylines = document.querySelector('.removeEmptylines');
 const sortLines = document.querySelector('.sortLines');
-const linkextractor = document.querySelector('.linkextractor');
-
 
 //event listners COMBO_FILTER
 randomize.addEventListener("click", randomizeClick);
@@ -47,7 +45,6 @@ getDuplicate.addEventListener("click", getDuplicateClick);
 comboOptimiser.addEventListener("click", comboOptimiserClick);
 removeEmptylines.addEventListener("click", removeEmptylinesClick);
 sortLines.addEventListener("click", sortLinesClick);
-linkextractor.addEventListener("click", linkextractorClick);
 
 // sidebar elements PASSWORD_TOOLs
 const passOptimiser = document.querySelector('.passOptimiser')
@@ -168,10 +165,6 @@ function removeEmptylinesClick() {
     setSactive(this);
 }
 function sortLinesClick() {
-    removeAllSactive();
-    setSactive(this);
-}
-function linkextractorClick() {
     removeAllSactive();
     setSactive(this);
 }
@@ -356,24 +349,6 @@ function removeEmptylinesF() {
     let regex = /^\s*$(?:\r\n?|\n)/gm;
     let result = lines.replace(regex, "");
     input.value = result;
-}
-function linkextractorF() {
-    let inputText = input.value;
-    
-    let urlRegex = /http[s]?:\/\/(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*(),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+/g;
-
-    let urlMatches = inputText.match(urlRegex);
-
-    let resultText = "";
-
-
-    if (!urlMatches) {
-        document.getElementById('input').value = "";
-        console.log("No URLs found");
-    } else {
-        resultText = urlMatches.join("\n");
-        input.value = resultText;
-    }
 }
 function passOptimiserF() {
     let plength = document.querySelector('.plength');
@@ -727,9 +702,6 @@ function gettext() {
             break;
         case sortLines:
             sortLinesF();
-            break;
-        case linkextractor:
-            linkextractorF();
             break;
         case passOptimiser:
             passOptimiserF();
